@@ -8,6 +8,21 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 230, 238, 10),
       appBar: myAppBar(),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              height: 40,
+              padding: EdgeInsets.symmetric(horizontal: 70),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: TextField(),
+            )
+          ],
+        ),
+      ),
     );
   }
 
