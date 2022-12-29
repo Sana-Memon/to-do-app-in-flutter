@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/todo.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+
+  // final myTodoList = Todo.todoList();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromRGBO(229, 230, 238, 10),
         appBar: myAppBar(),
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
-            children: [searchBox(), Heading(), ListView(li)],
+            children: [
+              searchBox(),
+              Heading(),
+              listItem(),
+            ],
           ),
         ));
   }
@@ -70,6 +77,37 @@ class MainScreen extends StatelessWidget {
         "All ToDos",
         style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
       )),
+    );
+  }
+
+  listItem() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: ListTile(
+          onTap: () {
+            print("Clicked on list item");
+          },
+          tileColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          leading: Icon(
+            Icons.check_box,
+            color: Colors.green,
+          ),
+          title: Text(
+            "Check Emails",
+            style: TextStyle(decoration: TextDecoration.lineThrough),
+          ),
+          trailing: IconButton(
+            onPressed: () {
+              print("Cliecked on delete button ");
+            },
+            icon: Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
+          )),
     );
   }
 }
